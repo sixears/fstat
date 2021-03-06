@@ -132,9 +132,9 @@ modification = posixSecondsToUTCTime ∘ _modification
 status_change ∷ FStat → UTCTime
 status_change = posixSecondsToUTCTime ∘ _status_change
 
-instance Printable FStat where
 {- | Rough 'n' ready stat output.  Feel free to improve this as time allows,
      it's just a textual representation, nothing should be parsing it. -}
+instance Printable FStat where
   print s = P.text $
     unlines [ [fmt|%-15w\tSize: %d|] (ftype s) (size s)
             , [fmt|Maj/Min: %d,%d\tDevice: %w\tInode: %d\tLinks: %d|]
