@@ -89,6 +89,7 @@ data FStat = FStat { _ftype          ∷ FileType
                    , _modification   ∷ POSIXTime
                    , _status_change  ∷ POSIXTime
                    }
+  deriving (Eq,Show)
 
 dev_id ∷ FStat → DeviceID
 dev_id = _dev_id
