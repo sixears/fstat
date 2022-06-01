@@ -4,9 +4,13 @@
 {-# LANGUAGE UnicodeSyntax     #-}
 {-# LANGUAGE ViewPatterns      #-}
 
+-- we export the c'tor for FStat so that clients can make their own for
+-- mock purposes
 module FStat
-  ( FileType(..), FStat, access, dev_id, dev_major, dev_minor, ftype, group
-  , inode, mkfstat, nlinks, owner, perms, size, specialDeviceID, status_change )
+  ( FileType(..), FStat( FStat )
+  , access, dev_id, dev_major, dev_minor, ftype, group, inode, mkfstat, nlinks
+  , owner, perms, sampleLStat0, size, specialDeviceID, status_change
+  )
 where
 
 import Prelude  ( div, error, fromIntegral, rem )
@@ -161,5 +165,11 @@ mkfstat s = FStat { _ftype          = fileType s
                   , _modification   = modificationTimeHiRes s
                   , _status_change  = statusChangeTimeHiRes s
                   }
+
+{-| An example FStat, for testing & mocking, etc.  -}
+sampleLStat0 ∷ FStat
+sampleLStat0 =
+  FStat SymbolicLink 5 0 224 00120777 1 0 0 15 94694400 94694400 94694400
+
 
 -- that's all, folks! ----------------------------------------------------------
