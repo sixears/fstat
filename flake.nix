@@ -5,7 +5,7 @@
     nixpkgs.url      = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     build-utils.url  = github:sixears/flake-build-utils/r1.0.0.13;
 
-    tfmt.url         = github:sixears/tfmt/r0.2.7.23;
+    tfmt.url         = github:sixears/tfmt/r0.2.7.24;
   };
 
   outputs = { self, nixpkgs, build-utils
@@ -18,7 +18,7 @@
                     }:
         mkDerivation {
           pname = "fstat";
-          version = "1.0.2.24";
+          version = "1.0.2.25";
           src = ./.;
           libraryHaskellDepends = [
             base base-unicode-symbols data-textual text text-printer time unix
